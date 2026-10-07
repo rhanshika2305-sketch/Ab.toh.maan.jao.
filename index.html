@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ab Toh Maan Jao Please ❤️</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #E0F2FE; /* Light Blue Theme */
+            color: #1E3A8A;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating Blue & White Flowers background decoration */
+        .flower {
+            position: absolute;
+            font-size: 2rem;
+            user-select: none;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-20px) rotate(20deg); }
+        }
+
+        /* Main Card Container */
+        .card-container {
+            width: 90%;
+            max-width: 500px;
+            height: 520px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.15);
+            border: 2px solid #BAE6FD;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        /* Slide Styling */
+        .slide {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Slide 1 - Title Typography */
+        .title-bold {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #0F172A; /* Bold Navy Accent */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle-cursive {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #0284C7; /* Soft Blue */
+            margin-bottom: 30px;
+        }
+
+        /* Cute Paragraphs Styling */
+        .cute-paragraph {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #1E293B;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        /* Slide Indicator Badge */
+        .slide-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0284C7;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            background: #E0F2FE;
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+
+        /* Navy Blue Buttons */
+        .btn-navy {
+            background-color: #0F172A; /* Navy Blue */
+            color: #FFFFFF;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.3);
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .btn-navy:hover {
+            background-color: #1E293B;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.4);
+        }
+
+        .btn-navy:active {
+            transform: translateY(0);
+        }
+
+        /* 5th Slide Elements */
+        .big-heart {
+            font-size: 6rem;
+            margin-bottom: 20px;
+            animation: pulse 1.2s infinite alternate;
+            user-select: none;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .btn-action {
+            width: 100%;
+            font-size: 0.95rem;
+            padding: 14px 16px;
+            border-radius: 12px;
+            font-weight: 400; /* Normal Writing */
+        }
+
+        /* Popup Box */
+        .popup-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: #FFFFFF;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 350px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: popIn 0.3s ease forwards;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .popup-title {
+            font-size: 1.5rem;
+            color: #0F172A;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .popup-text {
+            font-size: 1rem;
+            color: #334155;
+            margin-bottom: 20px;
+        }
+
+        .popup-close-btn {
+            background: #0284C7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Background Flowers -->
+    <div class="flower" style="top: 10%; left: 8%;">🌸</div>
+    <div class="flower" style="top: 20%; right: 12%; animation-delay: 1s;">🪻</div>
+    <div class="flower" style="bottom: 15%; left: 15%; animation-delay: 2s;">🌺</div>
+    <div class="flower" style="bottom: 20%; right: 10%; animation-delay: 1.5s;">🌸</div>
+    <div class="flower" style="top: 50%; left: 5%; animation-delay: 2.5s;">🪻</div>
+    <div class="flower" style="top: 70%; right: 5%; animation-delay: 0.5s;">🌸</div>
+
+    <!-- Main Card Container -->
+    <div class="card-container">
+
+        <!-- Slide 1: Introduction -->
+        <div class="slide active" id="slide-1">
+            <div style="font-size: 3rem; margin-bottom: 15px;">🌸</div>
+            <h1 class="title-bold">MY LOVE</h1>
+            <p class="subtitle-cursive">Ab To man jao please🥺💗</p>
+            <button class="btn-navy" onclick="nextSlide(2)">Next Slide ➜</button>
+        </div>
+
+        <!-- Slide 2: Cute Paragraph 1 -->
+        <div class="slide" id="slide-2">
+            <span class="slide-tag">Slide 02</span>
+            <p class="cute-paragraph">
+                Mujhe pta hh meri wjah se sb hua hh, pr babu aapke bina mujhe kuch bhi acha ni lgta. Aapki smile meree din kaa sbsee pyaraa part hh, toh please mujhsee gussa mt rho na mt jaoo ! 🥺🪻
+            </p>
+            <button class="btn-navy" onclick="nextSlide(3)">Next Slide ➜</button>
+        </div>
+
+        <!-- Slide 3: Cute Paragraph 2 -->
+        <div class="slide" id="slide-3">
+            <span class="slide-tag">Slide 03</span>
+            <p class="cute-paragraph">
+                Aap jb gussa hote hona toh meri puri duniya ruk jaati hh. Mujhe sirf aap chaiyee or aapka sth aapka pyar mujhe aapke bina ni rehna mere paas koi bhi ni bbu! Kya aap apni bubu ko ye bhi ni de sktee ? 💙
+            </p>
+            <button class="btn-navy" onclick="nextSlide(4)">Next Slide ➜</button>
+        </div>
+
+        <!-- Slide 4: Cute Paragraph 3 -->
+        <div class="slide" id="slide-4">
+            <span class="slide-tag">Slide 04</span>
+            <p class="cute-paragraph">
+                I promise mai apni height badha lugi or aapki baate manugi is baar ki trah kalesh bhi ni krugi. Aap meri life ke sbse special person ho mai aapko khona ni chahti babu. Ab aage wali slide dekho or btao maan gye na? ✨🌸
+            </p>
+            <button class="btn-navy" onclick="nextSlide(5)">Next Slide ➜</button>
+        </div>
+
+        <!-- Slide 5: Big Heart & Interactive Buttons -->
+        <div class="slide" id="slide-5">
+            <div class="big-heart">🩵</div>
+            <div class="action-buttons">
+                <!-- First Button: Normal writing -->
+                <button class="btn-navy btn-action" onclick="showPopup('Yayyy! 🥰', 'Mujhe pata tha mera bachaa mujhse jyada der tk naraz nii reh skta! I Love you so much! ❤️✨')">
+                    Meri bachiee ne mujhe itna manaya itni der tk manaya toh mai maan gya ☺️
+                </button>
+                
+                <!-- Second Button: Normal writing + Angry Emoji -->
+                <button class="btn-navy btn-action" onclick="handleAngryClick(this)">
+                    Mai bhot gussa hu abhi ni maana 😡
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Popup Window -->
+    <div class="popup-modal" id="popupModal">
+        <div class="popup-content">
+            <h2 class="popup-title" id="popupTitle">Header</h2>
+            <p class="popup-text" id="popupText">Message text goes here.</p>
+            <button class="popup-close-btn" onclick="closePopup()">Close 💕</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Functions -->
+    <script>
+        // Function to switch slides
+        function nextSlide(slideNumber) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            const targetSlide = document.getElementById(`slide-${slideNumber}`);
+            if (targetSlide) {
+                targetSlide.classList.add('active');
+            }
+        }
+
+        // Popup functions
+        function showPopup(title, message) {
+            document.getElementById('popupTitle').innerText = title;
+            document.getElementById('popupText').innerText = message;
+            document.getElementById('popupModal').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popupModal').style.display = 'none';
+        }
+
+        // Interactive logic for "Main bahut gussa hu 😡" button
+        let angryClickCount = 0;
+        function handleAngryClick(btn) {
+            angryClickCount++;
+            if (angryClickCount === 1) {
+                showPopup("Esa mt kro na cutuu! 🥺", "Itni der me thoda sa bhi gussa km ni hua? Pleaseee maan jao naa or mt jao! 🥺💕");
+            } else if (angryClickCount === 2) {
+                showPopup("Arre baap re! 🙈", "Itna gussa pyare bcho ke liye acha ni hota! Chaaliyee ab jldi se maan jaiyee !");
+                btn.innerText = "Acha thik hai, maan gya! 🥰";
+            } else {
+                showPopup("Hehehe! ❤️", "Ab toh aap maan gye ho.. I love you sweetuuuuu 😽!");
+            }
+        }
+    </script>
+</body>
+</html>
